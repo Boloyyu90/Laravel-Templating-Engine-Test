@@ -32,7 +32,7 @@
       <ul class="navbar-nav ml-auto ">
         <!-- Navbar Search -->
         <li class="nav-item d-flex align-items-center">
-          <button class="btn btn-sm btn-danger">
+          <button class="btn btn-sm btn-danger" id="logoutButton">
             <i class="fa-solid fa-right-from-bracket"></i> Logout
           </button>
           <div class="navbar-search-block">
@@ -99,6 +99,16 @@
             </li>
           </ul>
         </nav>
+        <nav class="mt-2">
+          <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+            <li class="nav-item">
+              <a href="{{ url('presensi') }}" class="nav-link">
+                <i class="nav-icon far fa-circle"></i>
+                <p> Presensi Member</p>
+              </a>
+            </li>
+          </ul>
+        </nav>
         <!-- /.sidebar-menu -->
       </div>
       <!-- /.sidebar -->
@@ -112,11 +122,27 @@
     <footer class="main-footer">
       <!-- To the right -->
       <div class="float-right d-none d-sm-inline">
-        210711165
+        210711320
       </div>
       <!-- Default to the left -->
       <strong>Copyright &copy; {{ date('Y') }} <a href="#">Gofit</a>. </strong> All rights reserved.
     </footer>
+
+    <div class="modal fade" id="logoutModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header" style="color: white; background-color: #3b6aff;">
+            <h5 class="modal-title" id="exampleModalLabel">Apakah Ingin Logout?</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
+            <a href="{{ route('logout') }}" class="btn btn-danger">Logout</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
   </div>
   <!-- ./wrapper -->
   <!-- REQUIRED SCRIPTS -->
@@ -126,6 +152,12 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
   <!-- AdminLTE App -->
   <script src="{{ asset('js/adminlte.min.js') }}"></script>
+  
+  <script>
+    document.getElementById('logoutButton').addEventListener('click', function() {
+      $('#logoutModal').modal('show');
+    });
+  </script>
 </body>
 
 </html>
